@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de cuentas: Lista</title>
+    <link rel="stylesheet" href="/static/pico.css">
+    <link rel="stylesheet" href="/static/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
+
+</head>
+<body>
+    
+    <header >
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><strong>App Ingresos/Gastos</strong></li>
+                </ul>
+                <ul>
+                    <li><a class="miTituloNav" href="/" >Inicio</a></li>
+                    <li><a class="miTituloNav" href="/new">Nuevo</a></li>
+                    <li><a class="miTituloNav" href="/buscar">Buscar</a></li>
+                </ul>
+            </nav>
+
+        </div>
+        <div class="grid">
+            <div>Ingreso:{{ingreso}}€</div>
+            <div>Egreso:{{egreso}}€</div>
+            <div>Saldo:{{saldo}}€</div>    
+        </div>
+       
+
+    </header>
+    
+    <section class="container   contenedor-scroll">
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                <ul class=flashes>
+                {% for message in messages %}
+                <li>{{ message }}</li>
+                {% endfor %}
+                </ul>
+            {% endif %}
+        {% endwith %}
+
+        {% block contenido %}
+       
+        {% endblock %}
+    </section>
+
+    <footer >
+        <div class="container">
+            &copy; 2025 RolandoLopez
+        </div>
+        
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block contenido %}
+
+<form action="{{dataURL}}" method="post">
+  {{dataForm.csrf_token}}
+
+  {{dataForm.date.label}}
+  {{dataForm.date}}
+  {% if dataForm.date.errors %}
+      <ul class="errors">
+      {% for error in dataForm.date.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+
+  {{dataForm.concept.label}}
+  {{dataForm.concept( placeholder = "Ingrese el concepto")}}
+  {% if dataForm.concept.errors %}
+      <ul class="errors">
+      {% for error in dataForm.concept.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+
+  {{dataForm.quantity.label}}
+  {{dataForm.quantity( placeholder="Ingrese monto",style="background-color: #ccc;")}}
+  {% if dataForm.quantity.errors %}
+      <ul class="errors">
+      {% for error in dataForm.quantity.errors %}
+          <li>{{ error }}</li>
+      {% endfor %}
+      </ul>
+  {% endif %}
+
+  {{dataForm.submit}}
+
+ 
+</form>
+
+
+
+{% endblock %}

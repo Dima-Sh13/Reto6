@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+
+{% block contenido %}
+
+<form action="{{dataURL}}" method="post">
+  
+
+  {{dataForm.date.label}}
+  {{dataForm.date}}
+
+
+  {{dataForm.concept.label}}
+  {{dataForm.concept( placeholder = "Ingrese el concepto")}}
+
+
+
+  {{dataForm.submit}}
+
+</form>
+
+
+
+{% endblock %}
