@@ -61,20 +61,41 @@ def select_egreso():
     return resultadoEgreso[0][0]
 
 
-def select_by_date(date):
-    conectSelectBy= Conexion(f"SELECT * from movement WHERE date={date};")
+def select_by_date(*args):
+    
+    conectSelectBy= Conexion(f"SELECT * FROM movement")
     result = conectSelectBy.res.fetchall()
     conectSelectBy.con.close()
+    
+
 
     return result
 
 def ByConcept(concept):
+    registros =[]
+    con_ant = 0
+    con_actual = 0
+    res = []
+    for i in concept:
+        registros.append(i)
     concectCon =Conexion("SELECT concept FROM movement ")
-    result = concectCon.res.fetchall()
+    result = [i[0] for i in concectCon.res.fetchall()]
     concectCon.con.close()
-    listConcept = list(concept)
-    
     for i in result:
+        z = 0
         for x in i:
-            if x in listConcept:
-                pass
+         
+                if x[z] == i[z]:
+                    con_actual +=1
+                z +=1
+                if z >= len(i):
+                    break
+        if con_actual >= con_ant:
+            res.append(i)
+        con_ant = con_actual
+        con_actual = 0
+           
+        
+
+    
+    return res
