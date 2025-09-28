@@ -73,8 +73,11 @@ def ByConcept(concept):
     result = concectCon.res.fetchall()
     concectCon.con.close()
     listConcept = list(concept)
-    
+    strike = 0
+    strike_indx = {}
     for i in result:
-        for x in i:
-            if x in listConcept:
-                pass
+        for x in range(len(concept)):
+            if i[x] == concept[x]:
+                strike += 1
+        strike_indx[i] = strike
+        strike = 0    
