@@ -73,8 +73,32 @@ def update(id):
 @app.route("/buscar", methods=["GET", "POST"])
 def buscar():
     form = searchForm()
+    registro = None
+    if request.method == "GET":
+        return render_template("buscar.html", dataForm=form )
+    else:
+        result = ByConcept(form.concept.data)
+       
+      
+            
+
+        return render_template("search_result.html", resultado = ByConcept(form.concept.data) )
+    
+
+"""
+def buscar():
+    form = searchForm()
+    registro = None
     if request.method == "GET":
         return render_template("buscar.html", dataForm=form )
     else:
         resultado = select_by_date(form.date)
-        return render_template("search_result.html", resultado = select_by_date(form.date) )
+        date_obj = form.date.data              
+        date_str = date_obj.strftime("%Y-%m-%d")
+        for i in resultado:
+            if i[1] == date_str:
+                registro = i
+            
+
+        return render_template("search_result.html", resultado = registro )    
+"""
