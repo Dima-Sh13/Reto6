@@ -75,9 +75,9 @@ def ByConcept(concept):
     listConcept = list(concept)
     strike = 0
     strike_indx = {}
-    for i in result:
-        for x in range(len(concept)):
-            if i[x] == concept[x]:
+    for i in result:                                           #Reccoremos todos los conceptos de la lista uno a uno
+        for x in range(len(concept)):                          #Un for para recorrer incrementar un indice de busqueda por posicion de las str  
+            if i[x] == concept[x]:                             #Recorremos los conceptos de la lista letra por letra y los comparamos a la misma posicion del concepto buscado, si es igual se suma strike
                 strike += 1
-        strike_indx[i] = strike
-        strike = 0    
+        strike_indx[i] = strike                                #Añadimos el resultado del strike y la palabra a la que pertenece a un diccionario
+        strike = 0                                             #Volvemos a dejar el strike en 0 y pasamos a la proxima palabra.
