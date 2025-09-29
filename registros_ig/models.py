@@ -90,3 +90,10 @@ def ByConcept(concept):
                 strike += 1
         strike_indx[i] = strike                                #Añadimos el resultado del strike y la palabra a la que pertenece a un diccionario
         strike = 0                                             #Volvemos a dejar el strike en 0 y pasamos a la proxima palabra.
+    h_strike = 0
+    for v,k in strike_indx.items():
+        if k >= h_strike:
+            k = h_strike
+
+        return strike_indx[k]     
+
