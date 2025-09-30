@@ -97,3 +97,5 @@ def ByConcept(concept):
 
         return strike_indx[k]     
 
+
+
